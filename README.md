@@ -11,9 +11,8 @@ activation through `Verification(key)`.
 
 **Windows 10 version 2004/build 19041+ or Windows 11, x64 only.** This is an
 engineering evaluation. Application, SDK, examples and installer
-source are public; kernel implementation stays private. Microsoft signing and
-returned-package qualification are required before an installable public driver
-bundle is supplied. The labelled `--preview` opens no USB interface, runtime or
+source are public; kernel implementation stays private. The complete release includes the returned Microsoft-signed
+runtime/controller packages and both self-contained installers. The labelled `--preview` opens no USB interface, runtime or
 network listener. See [validation](docs/VALIDATION.md) for actual test scope.
 
 ## Initial supported scope
@@ -40,6 +39,12 @@ Original firmware data is otherwise forwarded through the bounded supported API.
 The encrypted wire protocol is specific to this SDK. It is not compatible with
 Linux USB/IP, VirtualHere or other vendors' transports. Network and USB scheduling
 still affect timing; no physical-bus timing or zero-latency equivalence is claimed.
+
+The release ZIP contains the application, CLI, example, both single-file setup
+executables and matching opaque Microsoft-signed packages under `Driver/`.
+Microsoft signing covers the driver packages; the user-mode EXEs are separate.
+The supported scope and executed qualification are documented in
+[validation](docs/VALIDATION.md).
 
 ## Install and use
 
@@ -151,9 +156,9 @@ public application/SDK. A WDK is needed only for the private driver project.
 ```powershell
 .\Build.ps1
 .\Build.ps1 -Asan
-# Rebuild setup only with both independently supplied trusted opaque packages:
-.\Build.ps1 -RuntimePackageDirectory C:\Signed\TitanSdkRuntime `
-            -DriverPackageDirectory C:\Signed\TitanUSBOverIP
+# Rebuild setup with both opaque signed packages from the release ZIP:
+.\Build.ps1 -RuntimePackageDirectory .\Driver\TitanSdkRuntime `
+            -DriverPackageDirectory .\Driver\TitanUSBOverIP
 ```
 
 Outputs are in `obj/Build/bin/Release`. Kernel sources, CABs, PDBs, private lab

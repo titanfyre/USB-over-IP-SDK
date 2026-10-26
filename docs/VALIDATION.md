@@ -1,6 +1,6 @@
 # Validation and boundaries
 
-USB-over-IP SDK 0.1.0 targets Windows 10 version 2004/build 19041+ x64 and Windows 11 x64. The
+USB-over-IP SDK 0.1.1 targets Windows 10 version 2004/build 19041+ x64 and Windows 11 x64. The
 new UdeCx driver has its own identity and qualification; prior Vdevice results
 do not qualify this driver automatically.
 
@@ -22,11 +22,21 @@ fixtures, package removal and required normal restarts. The guest was restored
 to its original checkpoint and finished Off; host boot/security policy was not
 changed. These results cover that candidate and fixture, not every Windows PC.
 
-New kernel candidates used guest-only test signing. Independent fixture drivers
-retained their verified Microsoft signatures. This is functional qualification,
-not a Microsoft attestation/HLK/WHQL claim. Returned Microsoft packages and the
-final embedded setup still require their own trust, membership and installation
-checks before installable binaries are distributed.
+The original candidate completed its pre-submission tests with guest-only test
+signing. The returned Microsoft packages additionally passed kernel-policy trust,
+catalog membership and unchanged Authenticode-content checks against that exact
+candidate. Both final UI and console setups were inspected as data: their embedded
+drivers and applications match the reviewed release files byte for byte.
+
+The returned packages then completed normal and targeted Driver Verifier
+campaigns in the owned Windows 10 build 19045 guest with **test signing disabled**.
+The four actual console installers performed installation and uninstallation;
+the same native functional fixtures, genuine signed full-mode grants and owned
+interactive desktop test passed. Exact installed SYS hashes, package removal,
+evidence collection and restoration to the original Off guest were verified.
+This establishes the documented evaluation scope, not HLK/WHQL certification or
+qualification of Windows 11, Secure Boot/HVCI and arbitrary physical hardware.
+The application bundle is 0.1.1; signed driver package versions remain 0.1.0.0.
 
 ## Demo and activation qualification
 
@@ -66,8 +76,8 @@ a synthetic device does not establish physical USB timing or a two-PC network
 benchmark. The separate short-runtime campaign additionally exercised actual
 expiry and recovery, as described above.
 
-The frozen UdeCx driver input SHA256 is 18dd213ef98c043689f49781c3cde6df3fd8d3d4bbb3d7cb62c932e38c5264c3.
-The shared production runtime input SHA256 is 5ee4e64afeffe527a02b74fc50bdcc7eed4808e6e3ec9a3db028039057c6bf80.
+The pre-signature qualified UdeCx driver input SHA256 is 18dd213ef98c043689f49781c3cde6df3fd8d3d4bbb3d7cb62c932e38c5264c3.
+The unsigned qualification runtime input SHA256 is 5ee4e64afeffe527a02b74fc50bdcc7eed4808e6e3ec9a3db028039057c6bf80.
 
 ## Defined implementation boundaries
 
@@ -106,7 +116,7 @@ guarantee is claimed.
 
 ## Remaining qualification
 
-Returned Microsoft packages/final setups, representative physical WinUSB
+Representative physical WinUSB
 hardware, two-PC/Wi-Fi links, Windows 11, Secure Boot/HVCI, sleep/resume,
 low-resource simulation and prolonged throughput/latency measurements remain
 separate qualification. These tests establish neither universal USB support nor

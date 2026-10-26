@@ -1,0 +1,63 @@
+#include "../SDK/USBOverIP.h"
+#include "../SDK/License.h"
+#include <windows.h>
+#include <commctrl.h>
+#include <atomic>
+#include <functional>
+#include <memory>
+#include <string>
+#include <thread>
+#include <vector>
+#include <stdexcept>
+namespace {
+constexpr COLORREF Navy=RGB(18,38,63),Blue=RGB(29,100,238),Light=RGB(242,245,250),White=RGB(255,255,255);
+HWND window{},devices{},bind{},exportPort{},pairing{},peer{},peerPort{},pin{},secret{},key{},status{},license{};
+HFONT font{},titleFont{};HBRUSH background{};std::thread job;std::atomic_bool busy=false;bool preview=false;unsigned pulse=0;
+std::unique_ptr<UsbIp::Exporter> exporter;std::unique_ptr<UsbIp::Client> client;std::vector<UsbIp::Device> inventory;bool closing=false;
+std::vector<HWND> buttons;
+std::wstring Wide(const std::string& s){if(s.empty())return {};int n=MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,s.data(),int(s.size()),nullptr,0);if(!n)return L"Invalid UTF-8 error detail.";std::wstring r(size_t(n),L' ');MultiByteToWideChar(CP_UTF8,0,s.data(),int(s.size()),r.data(),n);return r;}
+std::wstring Text(HWND h){int n=GetWindowTextLengthW(h);std::wstring s(size_t(n)+1,L'\0');GetWindowTextW(h,s.data(),n+1);s.resize(size_t(n));return s;}
+std::string Utf8(HWND h){auto s=Text(h);if(s.empty())return {};int n=WideCharToMultiByte(CP_UTF8,0,s.data(),int(s.size()),nullptr,0,nullptr,nullptr);std::string out(size_t(n),' ');WideCharToMultiByte(CP_UTF8,0,s.data(),int(s.size()),out.data(),n,nullptr,nullptr);return out;}
+uint16_t Port(HWND h){auto s=Text(h);size_t used=0;unsigned long p=std::stoul(s,&used);if(used!=s.size()||!p||p>65535)throw std::runtime_error("Port must be 1..65535.");return uint16_t(p);}
+HWND Add(const wchar_t* cls,const wchar_t* text,DWORD style,int x,int y,int width,int height,int id=0){HWND h=CreateWindowExW(0,cls,text,WS_CHILD|WS_VISIBLE|style,x,y,width,height,window,reinterpret_cast<HMENU>(INT_PTR(id)),nullptr,nullptr);SendMessageW(h,WM_SETFONT,reinterpret_cast<WPARAM>(font),TRUE);return h;}
+HWND Button(const wchar_t* text,int x,int y,int width,int id){auto h=Add(L"BUTTON",text,BS_OWNERDRAW|WS_TABSTOP,x,y,width,40,id);buttons.push_back(h);return h;}
+HWND Edit(const wchar_t* text,int x,int y,int width,bool password=false){return Add(L"EDIT",text,WS_BORDER|WS_TABSTOP|ES_AUTOHSCROLL|(password?ES_PASSWORD:0),x,y,width,30);}
+void SetStatus(const std::wstring& s){if(Text(status)!=s)SetWindowTextW(status,s.c_str());}
+void Run(std::function<std::wstring()> action){if(busy.exchange(true))return;if(job.joinable())job.join();for(auto b:buttons)EnableWindow(b,FALSE);SetStatus(L"Working...");SetTimer(window,2,100,nullptr);try{job=std::thread([action=std::move(action)]{std::wstring result;try{result=action();}catch(const std::exception& e){result=Wide(e.what());}catch(...){result=L"The operation failed unexpectedly. No physical-device driver was replaced.";}auto value=new(std::nothrow)std::wstring(std::move(result));if(!PostMessageW(window,WM_APP+1,0,reinterpret_cast<LPARAM>(value)))delete value;});}catch(...){busy=false;KillTimer(window,2);for(auto b:buttons)EnableWindow(b,TRUE);SetStatus(L"Not enough resources to start this operation.");}}
+void Refresh(){SendMessageW(devices,CB_RESETCONTENT,0,0);inventory.clear();if(preview){SendMessageW(devices,CB_ADDSTRING,0,reinterpret_cast<LPARAM>(L"Offline preview - no device inventory opened"));SendMessageW(devices,CB_SETCURSEL,0,0);return;}try{inventory=UsbIp::Devices();for(const auto& d:inventory)SendMessageW(devices,CB_ADDSTRING,0,reinterpret_cast<LPARAM>(d.name.c_str()));if(inventory.empty())SendMessageW(devices,CB_ADDSTRING,0,reinterpret_cast<LPARAM>(L"No supported WinUSB interface found"));SendMessageW(devices,CB_SETCURSEL,0,0);}catch(const std::exception& e){SetStatus(Wide(e.what()));}}
+void Copy(){auto text=Text(pairing);if(text.empty()||!OpenClipboard(window))return;EmptyClipboard();auto bytes=(text.size()+1)*sizeof(wchar_t);HGLOBAL block=GlobalAlloc(GMEM_MOVEABLE,bytes);if(block){void* target=GlobalLock(block);if(target){memcpy(target,text.c_str(),bytes);GlobalUnlock(block);if(!SetClipboardData(CF_UNICODETEXT,block))GlobalFree(block);}else GlobalFree(block);}CloseClipboard();}
+void Paint(HDC dc,const RECT& bounds){RECT r=bounds;FillRect(dc,&r,background);SetBkMode(dc,TRANSPARENT);SetTextColor(dc,Navy);SelectObject(dc,titleFont);const wchar_t* title=L"USB-over-IP SDK";TextOutW(dc,36,28,title,lstrlenW(title));SelectObject(dc,font);const wchar_t* subtitle=L"Explicit device sharing  /  Native C++ API  /  Pinned TLS";TextOutW(dc,38,72,subtitle,lstrlenW(subtitle));HPEN pen=CreatePen(PS_SOLID,1,RGB(216,224,235));auto old=SelectObject(dc,pen);MoveToEx(dc,510,112,nullptr);LineTo(dc,510,612);MoveToEx(dc,38,624,nullptr);LineTo(dc,982,624);SelectObject(dc,old);DeleteObject(pen);}
+LRESULT CALLBACK Proc(HWND h,UINT m,WPARAM w,LPARAM l){switch(m){
+case WM_CREATE:{window=h;font=CreateFontW(17,0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Segoe UI");titleFont=CreateFontW(30,0,0,0,FW_SEMIBOLD,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Segoe UI");
+ Add(L"STATIC",L"EXPORT A DEVICE",0,38,118,420,24);Add(L"STATIC",L"One existing WinUSB interface. Its physical driver stays in place.",0,38,148,455,34);
+ devices=Add(L"COMBOBOX",L"",CBS_DROPDOWNLIST|WS_VSCROLL|WS_TABSTOP,38,194,340,220);Button(L"Refresh",390,190,95,1);
+ Add(L"STATIC",L"Bind IPv4",0,38,242,230,22);Add(L"STATIC",L"Port",0,304,242,160,22);bind=Edit(L"127.0.0.1",38,268,240);exportPort=Edit(L"28419",304,268,181);Button(L"Start export",38,316,218,2);Button(L"Stop export",270,316,215,3);
+ Add(L"STATIC",L"Pairing details - share only with the intended peer",0,38,380,447,22);pairing=Add(L"EDIT",L"Start an export to generate a temporary certificate pin and session secret.",WS_BORDER|ES_MULTILINE|ES_READONLY|ES_AUTOVSCROLL|WS_VSCROLL|WS_TABSTOP,38,410,447,138);Button(L"Copy pairing details",38,564,447,4);
+ Add(L"STATIC",L"CONNECT TO AN EXPORT",0,535,118,420,24);Add(L"STATIC",L"The peer certificate is pinned before USB traffic is accepted.",0,535,148,455,34);
+ Add(L"STATIC",L"Exporter IPv4",0,535,194,250,22);Add(L"STATIC",L"Port",0,801,194,160,22);peer=Edit(L"127.0.0.1",535,220,240);peerPort=Edit(L"28419",801,220,181);
+ Add(L"STATIC",L"Certificate SHA-256 (64 hexadecimal characters)",0,535,268,447,22);pin=Edit(L"",535,294,447);Add(L"STATIC",L"Session secret (32 hexadecimal characters)",0,535,342,447,22);secret=Edit(L"",535,368,447,true);Button(L"Connect",535,422,218,5);Button(L"Disconnect",767,422,215,6);
+ Add(L"STATIC",L"Use a specific local LAN IPv4 address to export to another PC.\r\nThe SDK does not open firewall rules or enable remote access.\r\nInitial support: one vendor WinUSB interface, USB 2 bulk / interrupt.",0,535,486,447,108);
+ key=Edit(L"",38,652,600,true);Button(L"Verification(key)",654,648,190,7);license=Add(L"STATIC",preview?L"Offline preview: no runtime, USB or network session opened.":L"One-hour demo per Windows boot. Verification unlocks this product for the current boot.",0,38,700,944,26);
+ status=Add(L"STATIC",preview?L"Offline preview - controls are disabled.":L"Choose an explicit interface or enter pairing details to begin.",0,38,754,944,56);
+ Refresh();if(preview)for(auto b:buttons)EnableWindow(b,FALSE);SetTimer(h,1,1000,nullptr);return 0;}
+case WM_COMMAND:if(HIWORD(w)==BN_CLICKED&&!preview&&!busy){switch(LOWORD(w)){
+ case 1:Refresh();break;
+ case 2:{auto selected=SendMessageW(devices,CB_GETCURSEL,0,0);if(selected<0||size_t(selected)>=inventory.size()){SetStatus(L"Select a supported WinUSB interface first.");break;}auto path=inventory[size_t(selected)].path;auto address=Utf8(bind);uint16_t port;try{port=Port(exportPort);}catch(const std::exception& e){SetStatus(Wide(e.what()));break;}Run([path,address,port]{if(exporter)exporter->Stop();exporter=std::make_unique<UsbIp::Exporter>();auto p=exporter->Start(path,address,port);return L"PAIRING\r\nAddress: "+Wide(p.address)+L"\r\nPort: "+std::to_wstring(p.port)+L"\r\nSHA-256: "+Wide(p.fingerprint)+L"\r\nSecret: "+Wide(p.secret);});break;}
+ case 3:Run([]{if(exporter)exporter->Stop();return L"Export stopped. The selected WinUSB interface was released.";});break;
+ case 4:Copy();break;
+ case 5:{UsbIp::Pairing p;try{p={Utf8(peer),Utf8(pin),Utf8(secret),Port(peerPort)};}catch(const std::exception& e){SetStatus(Wide(e.what()));break;}Run([p]{if(client)client->Stop();client=std::make_unique<UsbIp::Client>();client->Connect(p);return L"Virtual USB device connected through the authenticated encrypted channel.";});break;}
+ case 6:Run([]{if(client)client->Stop();return L"Virtual USB device disconnected.";});break;
+ case 7:{auto value=Utf8(key);SetWindowTextW(key,L"");Run([value]{auto error=UsbIp::Verification(value);if(!error.empty())return Wide(error);return std::wstring(L"USB-over-IP full mode is active for the current Windows boot.");});break;}
+ }}return 0;
+case WM_APP+1:{if(job.joinable())job.join();busy=false;KillTimer(h,2);for(auto b:buttons)EnableWindow(b,TRUE);std::unique_ptr<std::wstring> value(reinterpret_cast<std::wstring*>(l));if(closing){DestroyWindow(h);return 0;}if(value){if(value->find(L"PAIRING\r\n")==0){SetWindowTextW(pairing,value->substr(9).c_str());SetStatus(L"Export active. Copy the pairing details to its intended recipient.");}else SetStatus(*value);}else SetStatus(L"The operation completed without an allocated status message.");return 0;}
+case WM_TIMER:if(w==2){SetStatus(std::wstring(L"Working")+std::wstring(pulse++%4,L'.'));return 0;}if(!busy&&!preview){TS_STATUS s{};auto error=TitanSdk::Status(TITAN_SDK_USB_OVER_IP,s);std::wstring info=error.empty()?(s.mode==TITAN_SDK_MODE_FULL?L"FULL - active until Windows restarts":s.mode==TITAN_SDK_MODE_EXPIRED?L"DEMO EXPIRED - enter a product key":L"DEMO - "+std::to_wstring(s.remaining_100ns/10000000)+L" seconds remaining"):Wide(error);if(Text(license)!=info)SetWindowTextW(license,info.c_str());if(client){auto current=client->GetStatus();if(!current.detail.empty())SetStatus(Wide(current.detail)+L"  Completed: "+std::to_wstring(current.completed)+L"  Failed: "+std::to_wstring(current.failed));}else if(exporter){auto current=exporter->GetStatus();if(!current.detail.empty())SetStatus(Wide(current.detail)+L"  Completed: "+std::to_wstring(current.completed)+L"  Failed: "+std::to_wstring(current.failed));}}return 0;
+case WM_DRAWITEM:{auto d=reinterpret_cast<DRAWITEMSTRUCT*>(l);RECT r=d->rcItem;HBRUSH b=CreateSolidBrush((d->itemState&ODS_DISABLED)?RGB(180,191,208):((d->itemState&ODS_SELECTED)?Navy:Blue));FillRect(d->hDC,&r,b);DeleteObject(b);SetBkMode(d->hDC,TRANSPARENT);SetTextColor(d->hDC,White);SelectObject(d->hDC,font);auto t=Text(d->hwndItem);DrawTextW(d->hDC,t.c_str(),-1,&r,DT_CENTER|DT_VCENTER|DT_SINGLELINE);return TRUE;}
+case WM_CTLCOLORSTATIC:{auto dc=reinterpret_cast<HDC>(w);SetBkMode(dc,TRANSPARENT);SetTextColor(dc,Navy);return reinterpret_cast<LRESULT>(background);}
+case WM_SETCURSOR:if(GetClassLongPtrW(reinterpret_cast<HWND>(w),GCW_ATOM)==GetClassLongPtrW(buttons.empty()?h:buttons[0],GCW_ATOM)&&reinterpret_cast<HWND>(w)!=h){SetCursor(LoadCursorW(nullptr,IDC_HAND));return TRUE;}break;
+case WM_PAINT:{PAINTSTRUCT p;auto dc=BeginPaint(h,&p);RECT r;GetClientRect(h,&r);Paint(dc,r);EndPaint(h,&p);return 0;}
+case WM_PRINTCLIENT:{RECT r;GetClientRect(h,&r);Paint(reinterpret_cast<HDC>(w),r);return 0;}
+case WM_CLOSE:if(busy){MessageBoxW(h,L"An operation is still completing. Wait for its bounded connection or driver operation, then close the window.",L"Working",MB_OK|MB_ICONINFORMATION);return 0;}if(!client&&!exporter){DestroyWindow(h);return 0;}closing=true;Run([]{if(client)client->Stop();if(exporter)exporter->Stop();return std::wstring(L"Sessions stopped.");});return 0;
+case WM_DESTROY:if(job.joinable())job.join();client.reset();exporter.reset();KillTimer(h,1);DeleteObject(font);DeleteObject(titleFont);PostQuitMessage(0);return 0;
+}return DefWindowProcW(h,m,w,l);}
+}
+int WINAPI wWinMain(HINSTANCE instance,HINSTANCE,PWSTR args,int show){preview=wcsstr(args,L"--preview")!=nullptr;SetProcessDPIAware();background=CreateSolidBrush(Light);WNDCLASSW c{};c.lpfnWndProc=Proc;c.hInstance=instance;c.lpszClassName=L"TitanUSBOverIPStudio";c.hCursor=LoadCursorW(nullptr,IDC_ARROW);c.hbrBackground=background;if(!RegisterClassW(&c))return 1;window=CreateWindowW(c.lpszClassName,L"USB-over-IP SDK - explicit encrypted device sharing",WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX|WS_CLIPCHILDREN,CW_USEDEFAULT,CW_USEDEFAULT,1034,862,nullptr,nullptr,instance,nullptr);if(!window)return 1;ShowWindow(window,show);MSG m;while(GetMessageW(&m,nullptr,0,0)>0){if(!IsDialogMessageW(window,&m)){TranslateMessage(&m);DispatchMessageW(&m);}}DeleteObject(background);return 0;}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="292" viewBox="0 0 1080 292" role="img" aria-labelledby="title desc">
+<title id="title">Explicit encrypted WinUSB device bridge</title>
+<desc id="desc">An existing WinUSB interface connects to an exporter, a pinned TLS connection, a UdeCx client and an owned virtual WinUSB interface.</desc>
+<rect width="1080" height="292" rx="22" fill="#f2f5fa"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#12263f">
+<text x="36" y="48" font-size="26" font-weight="600">One selected interface. One authenticated peer.</text>
+<text x="36" y="77" font-size="15">Native Windows C++ SDK · bounded control / bulk / interrupt transfers</text>
+<g fill="white" stroke="#d8e0eb"><rect x="36" y="112" width="286" height="136" rx="14"/><rect x="758" y="112" width="286" height="136" rx="14"/></g>
+<text x="58" y="143" font-size="19" font-weight="600">Exporting PC</text><text x="58" y="174" font-size="15">Existing vendor WinUSB interface</text><text x="58" y="199" font-size="15">Explicit selection + Start export</text><text x="58" y="224" font-size="13">Physical function driver stays in place</text>
+<text x="780" y="143" font-size="19" font-weight="600">Receiving PC</text><text x="780" y="174" font-size="15">Owned UdeCx virtual USB child</text><text x="780" y="199" font-size="15">Enter pairing details + Connect</text><text x="780" y="224" font-size="13">Client close removes the owned child</text>
+<path d="M348 180H732m-10-7 10 7-10 7M358 173l-10 7 10 7" stroke="#1d64ee" stroke-width="3" fill="none"/>
+<text x="540" y="144" text-anchor="middle" font-size="18" fill="#1d64ee" font-weight="600">Pinned TLS 1.2</text><text x="540" y="213" text-anchor="middle" font-size="14">Certificate SHA-256 + session secret</text>
+</g></svg>

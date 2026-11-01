@@ -2,6 +2,17 @@
 
 **Share one explicitly selected WinUSB interface through an authenticated, encrypted connection and expose it as an owned Windows virtual USB device.**
 
+<!-- full-version-contact:start -->
+> [!IMPORTANT]
+> **Get the full version without demo restrictions**
+>
+> **Discord username: `titancsa`**
+>
+> Open Discord, choose **Friends > Add Friend**, enter **`titancsa`**, then send a direct message. Ask for the **full version without the demo time limit**, and mention **USB-over-IP SDK**.
+>
+> Tell me whether you need personal use, business integration or OEM redistribution, and ask for pricing and license / activation instructions.
+<!-- full-version-contact:end -->
+
 The native C++ SDK connects an existing WinUSB exporter to a private UdeCx virtual
 controller. Both IN and OUT transfers remain pending until the remote operation
 completes. The same installed driver supports a one-hour demo and product-key

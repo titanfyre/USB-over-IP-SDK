@@ -161,6 +161,10 @@ integration. No automatic payment collection is included.
 
 ## Build
 
+Application sources are in `App/`, the C++ SDK is in `SDK/`, and examples are in
+`Examples/`. UI and console installer sources are in `Installer/UI/` and
+`Installer/Console/`.
+
 Visual Studio 2022 Desktop C++, CMake and a Windows SDK are sufficient for the
 public application/SDK. A WDK is needed only for the private driver project.
 

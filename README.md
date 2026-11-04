@@ -22,9 +22,34 @@ activation through `Verification(key)`.
 
 **Windows 10 version 2004/build 19041+ or Windows 11, x64 only.** This is an
 engineering evaluation. Application, SDK, examples and installer
-source are public; kernel implementation stays private. The complete release includes the returned Microsoft-signed
+source are public. The current signed/full-activation kernel implementation
+remains private; a separate [demo-only source preview](driver/README.md) is included.
+The complete release includes the returned Microsoft-signed
 runtime/controller packages and both self-contained installers. The labelled `--preview` opens no USB interface, runtime or
 network listener. See [validation](docs/VALIDATION.md) for actual test scope.
+
+<!-- demo-only-source-preview:start -->
+## Separate demo-only source preview
+
+[driver/README.md](driver/README.md) describes a new demo-only source preview,
+including its matching client SDK under [driver/SDK/](driver/SDK/). It uses
+separate Demo driver/runtime identities, retains the one-hour per-product boot
+budget, and contains no full-activation implementation.
+
+This preview differs from the current signed release described here. The
+existing top-level SDK, applications, installers and signed packages continue
+to target the original combined demo/full runtime. Existing installers cannot
+install the new preview, and existing signed SYS/CAT files cannot be reused for
+it. The preview has compile/link and ABI-rejection checks only; new signing and
+runtime qualification remain separate work.
+
+The existing top-level application, SDK, examples and installer remain
+[MIT licensed](LICENSE). Newly published Titan-owned preview source uses the
+[evaluation-source terms](driver/LICENSE.txt). Previously MIT-licensed SDK
+portions and other upstream material retain their existing grants; see the
+[file-by-file licence map](driver/LICENSE-MAP.txt).
+
+<!-- demo-only-source-preview:end -->
 
 ## Initial supported scope
 
@@ -166,7 +191,9 @@ Application sources are in `App/`, the C++ SDK is in `SDK/`, and examples are in
 `Installer/Console/`.
 
 Visual Studio 2022 Desktop C++, CMake and a Windows SDK are sufficient for the
-public application/SDK. A WDK is needed only for the private driver project.
+public application/SDK. The separate [demo-only source preview](driver/README.md)
+also requires the WDK; the current signed/full-activation driver project
+remains excluded.
 
 ```powershell
 .\Build.ps1
@@ -176,9 +203,11 @@ public application/SDK. A WDK is needed only for the private driver project.
             -DriverPackageDirectory .\Driver\TitanUSBOverIP
 ```
 
-Outputs are in `obj/Build/bin/Release`. Kernel sources, CABs, PDBs, private lab
-tools, activation keys and signing material are excluded from the public repo.
-Public application/SDK/example/installer source is [MIT licensed](LICENSE);
+Outputs are in `obj/Build/bin/Release`. Kernel source for the current
+signed implementation with full activation remains excluded; the separate demo-only source
+preview is under `driver/`. CABs, PDBs, private lab tools, activation keys and
+signing material remain excluded from the public repo.
+Existing top-level application/SDK/example/installer source is [MIT licensed](LICENSE);
 private driver binaries have separate evaluation/OEM terms.
 
 Use only on systems and devices you own or are authorized to administer. You are

@@ -1,0 +1,268 @@
+﻿{
+    "Schema":  1,
+    "Repo":  "titanfyre/USB-over-IP-SDK",
+    "PreparedVariant":  "New demo-only source preview; distinct from current signed release",
+    "CopiedFiles":  [
+                        {
+                            "Path":  "SDK/DescriptorValidation.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/DescriptorValidation.h",
+                            "PreparedSHA256":  "3ED906901B4ADDFC6584DF84B1D718698AB3DB32EAB29C1F9A2183299085D3AE",
+                            "SHA256":  "3ED906901B4ADDFC6584DF84B1D718698AB3DB32EAB29C1F9A2183299085D3AE",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/License.cpp",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/License.cpp",
+                            "PreparedSHA256":  "55F224875C3E23035DB12C26A3F71E46FA2BB4EA66C36BD45B9C534643C90051",
+                            "SHA256":  "55F224875C3E23035DB12C26A3F71E46FA2BB4EA66C36BD45B9C534643C90051",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/License.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/License.h",
+                            "PreparedSHA256":  "FA72B2D457AB40954A70A7CFF7CB9652E52DABE3ED67EEA64479D354F3308774",
+                            "SHA256":  "FA72B2D457AB40954A70A7CFF7CB9652E52DABE3ED67EEA64479D354F3308774",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/LicenseProtocol.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/LicenseProtocol.h",
+                            "PreparedSHA256":  "271EDBF8126E3F841589F6B92CD35EAF7021E486CC83BBF85BC05858AD786A9E",
+                            "SHA256":  "271EDBF8126E3F841589F6B92CD35EAF7021E486CC83BBF85BC05858AD786A9E",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/Transport.cpp",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/Transport.cpp",
+                            "PreparedSHA256":  "E822B27D15325B341DCAF350B2964C06187B40BC3AE477B7DBBA58FEF1B61C56",
+                            "SHA256":  "E822B27D15325B341DCAF350B2964C06187B40BC3AE477B7DBBA58FEF1B61C56",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/Transport.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/Transport.h",
+                            "PreparedSHA256":  "9AF16040CD0F666A35FA646B08DF51B45E1FD6E173EFEF2ECAA120C278B77124",
+                            "SHA256":  "9AF16040CD0F666A35FA646B08DF51B45E1FD6E173EFEF2ECAA120C278B77124",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/USBOverIP.cpp",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/USBOverIP.cpp",
+                            "PreparedSHA256":  "6432C2ED4C484F7F0F0857E27DBB3A18DEEC6ABCD5C9794B114DFFB64C1AD30E",
+                            "SHA256":  "6432C2ED4C484F7F0F0857E27DBB3A18DEEC6ABCD5C9794B114DFFB64C1AD30E",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/USBOverIP.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/USBOverIP.h",
+                            "PreparedSHA256":  "ECD90FA98C1A83E9C89DE1A4692DE36E5DAABB3BC9A36C944695A3388A39C81A",
+                            "SHA256":  "ECD90FA98C1A83E9C89DE1A4692DE36E5DAABB3BC9A36C944695A3388A39C81A",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/USBProtocol.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/USBProtocol.h",
+                            "PreparedSHA256":  "B6E9C9844681C29F61AB6FCDCD54DDA204459510DAF2B58115A0B04CEF55058B",
+                            "SHA256":  "B6E9C9844681C29F61AB6FCDCD54DDA204459510DAF2B58115A0B04CEF55058B",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "SDK/Wire.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/SDK/Wire.h",
+                            "PreparedSHA256":  "364F833194E1F6AA6B3E556D8EA7690BA3F61E719EFD615650402F3F12E4AC06",
+                            "SHA256":  "364F833194E1F6AA6B3E556D8EA7690BA3F61E719EFD615650402F3F12E4AC06",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Runtime/DemoKernel.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Runtime/DemoKernel.h",
+                            "PreparedSHA256":  "1BECE1997DAEAF23A4CD252EFB8BA962AFA11ACE1262811F93707B753FE5C4D0",
+                            "SHA256":  "1BECE1997DAEAF23A4CD252EFB8BA962AFA11ACE1262811F93707B753FE5C4D0",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Runtime/LicenseProtocol.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Runtime/LicenseProtocol.h",
+                            "PreparedSHA256":  "271EDBF8126E3F841589F6B92CD35EAF7021E486CC83BBF85BC05858AD786A9E",
+                            "SHA256":  "271EDBF8126E3F841589F6B92CD35EAF7021E486CC83BBF85BC05858AD786A9E",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Runtime/Runtime.c",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Runtime/Runtime.c",
+                            "PreparedSHA256":  "4733CC3CBB9E1AF48360B359AA0EE9449743DECF1F6C221E88627492FEE84604",
+                            "SHA256":  "4733CC3CBB9E1AF48360B359AA0EE9449743DECF1F6C221E88627492FEE84604",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Runtime/TitanSdkDemoRuntime.inf",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Runtime/TitanSdkDemoRuntime.inf",
+                            "PreparedSHA256":  "54BE5479AF1CD7B85FF377AFCCD42D073B43E6DE6C746285444F28CA18204567",
+                            "SHA256":  "54BE5479AF1CD7B85FF377AFCCD42D073B43E6DE6C746285444F28CA18204567",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Runtime/TitanSdkDemoRuntime.vcxproj",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Runtime/TitanSdkDemoRuntime.vcxproj",
+                            "PreparedSHA256":  "A4283893F2CB0FD10C226B9DA7BCDDFA6DABA0A7B9F39BF320BDB724403D3FDF",
+                            "SHA256":  "A4283893F2CB0FD10C226B9DA7BCDDFA6DABA0A7B9F39BF320BDB724403D3FDF",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Driver/TitanUSBOverIPDemo.c",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Driver/TitanUSBOverIPDemo.c",
+                            "PreparedSHA256":  "D54A7C3DD09647BCAE3C0F95FF36FE1431D6A3CD0DAC73EFBB6F1E30ED03B441",
+                            "SHA256":  "D54A7C3DD09647BCAE3C0F95FF36FE1431D6A3CD0DAC73EFBB6F1E30ED03B441",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Driver/TitanUSBOverIPDemo.inf",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Driver/TitanUSBOverIPDemo.inf",
+                            "PreparedSHA256":  "D0474841407A93A6FD6AFB2E170FC4F06A5494662D06C3DF6CEF882B6F84D8C2",
+                            "SHA256":  "D0474841407A93A6FD6AFB2E170FC4F06A5494662D06C3DF6CEF882B6F84D8C2",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Driver/TitanUSBOverIPDemo.vcxproj",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Driver/TitanUSBOverIPDemo.vcxproj",
+                            "PreparedSHA256":  "FA3E061A1AA0CA14B476F35D361C7CF38BF0E5F7DD7D4F79E874AC3818C10201",
+                            "SHA256":  "FA3E061A1AA0CA14B476F35D361C7CF38BF0E5F7DD7D4F79E874AC3818C10201",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Shared/Protocol.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Shared/Protocol.h",
+                            "PreparedSHA256":  "B6E9C9844681C29F61AB6FCDCD54DDA204459510DAF2B58115A0B04CEF55058B",
+                            "SHA256":  "B6E9C9844681C29F61AB6FCDCD54DDA204459510DAF2B58115A0B04CEF55058B",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "Shared/Validate.h",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/driver/Shared/Validate.h",
+                            "PreparedSHA256":  "10380C0876AD8CD9F9BAECAE46F791AA8FE8FFD8E538A60FCFCFB255A389359D",
+                            "SHA256":  "10380C0876AD8CD9F9BAECAE46F791AA8FE8FFD8E538A60FCFCFB255A389359D",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "CMakeLists.txt",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/CMakeLists.txt",
+                            "PreparedSHA256":  "BF6FD7AAD1AA52F667252827D9BE3266AAA04D2FB10309E4B03A9061A45247DE",
+                            "SHA256":  "BF6FD7AAD1AA52F667252827D9BE3266AAA04D2FB10309E4B03A9061A45247DE",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        },
+                        {
+                            "Path":  "DemoAbiProbe.cpp",
+                            "PreparedProposalPath":  "USB-over-IP-SDK/DemoAbiProbe.cpp",
+                            "PreparedSHA256":  "47807D12C3AE952BB6B9693BC175651106BFB93898B2183BBB1AB533FA70D927",
+                            "SHA256":  "47807D12C3AE952BB6B9693BC175651106BFB93898B2183BBB1AB533FA70D927",
+                            "Change":  "Exact prepared demo-only proposal bytes"
+                        }
+                    ],
+    "ProtectedCurrentReleaseFiles":  [
+                                         {
+                                             "Path":  "SDK/DescriptorValidation.h",
+                                             "SHA256":  "3ED906901B4ADDFC6584DF84B1D718698AB3DB32EAB29C1F9A2183299085D3AE",
+                                             "Bytes":  14447
+                                         },
+                                         {
+                                             "Path":  "SDK/License.cpp",
+                                             "SHA256":  "32260E1D6735C9C1A408F9668EC6DC9243DD550C896BBA749BEBB554B95F2CFF",
+                                             "Bytes":  18005
+                                         },
+                                         {
+                                             "Path":  "SDK/License.h",
+                                             "SHA256":  "44BCC2A433F620ED0BDA807CF9C08FFD8598CC58F352FCB0F78E63666B685A70",
+                                             "Bytes":  579
+                                         },
+                                         {
+                                             "Path":  "SDK/LicenseProtocol.h",
+                                             "SHA256":  "271EDBF8126E3F841589F6B92CD35EAF7021E486CC83BBF85BC05858AD786A9E",
+                                             "Bytes":  1982
+                                         },
+                                         {
+                                             "Path":  "SDK/Transport.cpp",
+                                             "SHA256":  "E822B27D15325B341DCAF350B2964C06187B40BC3AE477B7DBBA58FEF1B61C56",
+                                             "Bytes":  19497
+                                         },
+                                         {
+                                             "Path":  "SDK/Transport.h",
+                                             "SHA256":  "9AF16040CD0F666A35FA646B08DF51B45E1FD6E173EFEF2ECAA120C278B77124",
+                                             "Bytes":  2154
+                                         },
+                                         {
+                                             "Path":  "SDK/USBOverIP.cpp",
+                                             "SHA256":  "A6027A32246F4FE44E0B0B91306E8B206988870FBBEEDF73BF777C53F7EA1E43",
+                                             "Bytes":  31107
+                                         },
+                                         {
+                                             "Path":  "SDK/USBOverIP.h",
+                                             "SHA256":  "ECD90FA98C1A83E9C89DE1A4692DE36E5DAABB3BC9A36C944695A3388A39C81A",
+                                             "Bytes":  1611
+                                         },
+                                         {
+                                             "Path":  "SDK/USBProtocol.h",
+                                             "SHA256":  "E65827AD42FA09E4CC2FEE9682BE24C2BD02B9BE7ED1C05895ADF30F6C3C5BE6",
+                                             "Bytes":  3469
+                                         },
+                                         {
+                                             "Path":  "SDK/Wire.h",
+                                             "SHA256":  "364F833194E1F6AA6B3E556D8EA7690BA3F61E719EFD615650402F3F12E4AC06",
+                                             "Bytes":  5144
+                                         },
+                                         {
+                                             "Path":  "App/Console.cpp",
+                                             "SHA256":  "F0C29870E7E354FA2885F0A112A2668003DF6365A4B0E3A585F6340464FD96BA",
+                                             "Bytes":  2371
+                                         },
+                                         {
+                                             "Path":  "App/Main.cpp",
+                                             "SHA256":  "EC6211C2B53EAEA5985BEFB4200E902BC53E5B8BFEAD92D20475147D3DA0EEDC",
+                                             "Bytes":  12743
+                                         },
+                                         {
+                                             "Path":  "Installer/Console/Main.cpp",
+                                             "SHA256":  "272A43CFEDDD8C94FF96369EE9CAE04F0DD0B6A53014851DC304FB2D72F9A3C3",
+                                             "Bytes":  616
+                                         },
+                                         {
+                                             "Path":  "Installer/UI/Main.cpp",
+                                             "SHA256":  "689BFC69225CBB16AB000D535C5E73D4BC26FAC88034AD511EE28585CC405759",
+                                             "Bytes":  4521
+                                         },
+                                         {
+                                             "Path":  "Installer/UI/RuntimeSetup.cpp",
+                                             "SHA256":  "41EFF1D64CE2E41413F6D9048D43D0F441FC27C49636A7CBE8F89AFFC7AE16AC",
+                                             "Bytes":  17732
+                                         },
+                                         {
+                                             "Path":  "Installer/UI/RuntimeSetup.h",
+                                             "SHA256":  "B600388E307B88C48A1EE32AEB8DF17761269DC538AB6B96AD541CC10B4AE309",
+                                             "Bytes":  215
+                                         },
+                                         {
+                                             "Path":  "Installer/UI/Setup.cpp",
+                                             "SHA256":  "0B2960ACB7519C646A5F3A3373353DE43B58F65EE8CCEAA290ECA7B9A9266BA7",
+                                             "Bytes":  16137
+                                         },
+                                         {
+                                             "Path":  "Installer/UI/Setup.h",
+                                             "SHA256":  "F369278259C6CCD92055858674C84FD3353458E6BF7F85A6127E33BF91732C0B",
+                                             "Bytes":  392
+                                         },
+                                         {
+                                             "Path":  "Build.ps1",
+                                             "SHA256":  "A906DF7B8495377FA0A70E7D109EEE999931F1702823B2DFB462125107CE37AC",
+                                             "Bytes":  1535
+                                         },
+                                         {
+                                             "Path":  "CMakeLists.txt",
+                                             "SHA256":  "71908512114A13E100802F135970033CCA0E5ABA3FB97CAF5AE9924D2965AEAC",
+                                             "Bytes":  3948
+                                         },
+                                         {
+                                             "Path":  "LICENSE",
+                                             "SHA256":  "941C3003D68166D736E0B15D77846EEE4EE814D7BCE37707AE5BB858D67E867B",
+                                             "Bytes":  1087
+                                         }
+                                     ]
+}

@@ -1,5 +1,10 @@
 # Validation and boundaries
 
+This document describes the current signed demo/full implementation and its
+release qualification. The separate [demo-only source preview](../driver/README.md)
+uses new identities and has compile/link plus ABI-rejection checks only.
+The runtime and hardware results below do not qualify that new preview.
+
 USB-over-IP SDK 0.1.1 targets Windows 10 version 2004/build 19041+ x64 and Windows 11 x64. The
 new UdeCx driver has its own identity and qualification; prior Vdevice results
 do not qualify this driver automatically.
@@ -120,5 +125,8 @@ Representative physical WinUSB
 hardware, two-PC/Wi-Fi links, Windows 11, Secure Boot/HVCI, sleep/resume,
 low-resource simulation and prolonged throughput/latency measurements remain
 separate qualification. These tests establish neither universal USB support nor
-zero overhead nor WHQL certification. Private kernel sources, lab probes/grants,
-signing credentials, PDBs and CABs are excluded from public downloads.
+zero overhead nor WHQL certification. Kernel source for the current signed
+implementation with full activation remains excluded. The separate
+[demo-only source preview](../driver/README.md) is included in `driver/`. Private
+lab probes/grants, signing credentials, PDBs and CABs remain excluded from
+public downloads.

@@ -208,7 +208,7 @@ signed implementation with full activation remains excluded; the separate demo-o
 preview is under `driver/`. CABs, PDBs, private lab tools, activation keys and
 signing material remain excluded from the public repo.
 Existing top-level application/SDK/example/installer source is [MIT licensed](LICENSE);
-private driver binaries have separate evaluation/OEM terms.
+prebuilt driver binaries have separate evaluation/OEM terms.
 
 Use only on systems and devices you own or are authorized to administer. You are
 responsible for lawful use, device-data handling and protection of pairing/key

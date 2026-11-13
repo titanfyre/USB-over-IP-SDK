@@ -11,7 +11,7 @@ Current source layout and registry coverage. A GitHub download is distinct from 
 | Python/pypi | built_fixture_and_production_verified | usb-over-ip-sdk [Source](USB-over-IP-SDK-Python-pypi/) |
 | Python/conda-forge | custom_channel_install_verified_requires_conda_forge_review | [usb-over-ip-sdk](https://raw.githubusercontent.com/TitanCSA/sdk-packages/089bc73095aa8eda89bacbe10d0b9e58394b0207/conda-channel) [Source](packaging/conda/) |
 | Rust/cargo | published_install_verified | [usb-over-ip-sdk](https://crates.io/crates/usb-over-ip-sdk) [Source](USB-over-IP-SDK-Rust-cargo/) |
-| JavaScript/npm | awaiting_browser_publication_authentication | [usb-over-ip-sdk](https://www.npmjs.com/package/usb-over-ip-sdk) [Source](USB-over-IP-SDK-JavaScript-npm/) |
+| JavaScript/npm | registry_publication_requires_action | [usb-over-ip-sdk](https://www.npmjs.com/package/usb-over-ip-sdk) [Source](USB-over-IP-SDK-JavaScript-npm/) |
 | Java/maven | published_install_verified | [usb-over-ip-sdk](https://central.sonatype.com/artifact/io.github.titancsa/usb-over-ip-sdk/1.0.0) [Source](USB-over-IP-SDK-Java-maven/) |
 | Java/jitpack | published_install_verified | [usb-over-ip-sdk](https://jitpack.io/#titanfyre/USB-over-IP-SDK/java-sdk-v1.0.0) [Source](USB-over-IP-SDK-Java-maven/) |
 | Go/modules | published_install_verified | [usb-over-ip-sdk](https://pkg.go.dev/github.com/titanfyre/USB-over-IP-SDK/USB-over-IP-SDK-Go-modules@v1.0.0) [Source](USB-over-IP-SDK-Go-modules/) |

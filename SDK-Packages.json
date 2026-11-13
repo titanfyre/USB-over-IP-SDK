@@ -203,7 +203,7 @@
       "api_prefix": "usb_over_ip_sdk_json_"
     },
     "JavaScript/npm": {
-      "status": "awaiting_browser_publication_authentication",
+      "status": "registry_publication_requires_action",
       "name": "usb-over-ip-sdk",
       "version": "1.0.0",
       "directory": "USB-over-IP-SDK-JavaScript-npm",

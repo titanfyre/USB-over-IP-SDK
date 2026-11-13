@@ -1,0 +1,33 @@
+{
+  "name": "usb-over-ip-sdk",
+  "version": "1.0.0",
+  "description": "Direct Windows x64 USB-over-IP-SDK JavaScript and TypeScript SDK",
+  "license": "MIT",
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "index.cjs",
+  "types": "index.d.ts",
+  "files": [
+    "index.cjs",
+    "index.d.ts",
+    "prebuilds/",
+    "docs/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titanfyre/USB-over-IP-SDK.git",
+    "directory": "USB-over-IP-SDK-JavaScript-npm"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

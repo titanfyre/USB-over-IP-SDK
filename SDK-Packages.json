@@ -131,29 +131,28 @@
       "github_directory": "packaging/native"
     },
     "CPP/nuget": {
-      "status": "account_email_confirmed_requires_matching_trusted_publishing_policy",
+      "status": "published_payload_verified",
       "name": "USB-over-IP-SDK.Native",
       "version": "0.1.1",
-      "registry_published": false,
-      "consumer_build_verified": true,
+      "url": "https://www.nuget.org/packages/USB-over-IP-SDK.Native/0.1.1",
+      "public_payload_verified": true,
+      "public_consumer_verified": false,
+      "local_consumer_verified": true,
+      "registry_published": true,
       "documentation_bundled": true,
-      "publication_on_hold_by_owner": false,
-      "nuget_publication_status": "ready_requires_trusted_publishing_policy"
+      "publication_on_hold_by_owner": false
     },
     "NET/nuget": {
-      "status": "built_verified_requires_trusted_publishing_policy",
+      "status": "published_payload_verified",
       "name": "USBoverIPSDK.SDK",
       "version": "1.0.0",
-      "directory": "USB-over-IP-SDK-NET-nuget",
-      "registry_published": false,
-      "documentation_bundled": true,
-      "url": null,
+      "url": "https://www.nuget.org/packages/USBoverIPSDK.SDK/1.0.0",
+      "public_payload_verified": true,
       "public_consumer_verified": false,
-      "module": "usb_over_ip_sdk",
-      "dll_name": "USBoverIPSDKJsonSDK.dll",
-      "api_prefix": "usb_over_ip_sdk_json_",
-      "publication_on_hold_by_owner": false,
-      "nuget_publication_status": "ready_requires_trusted_publishing_policy"
+      "local_consumer_verified": true,
+      "registry_published": true,
+      "documentation_bundled": true,
+      "publication_on_hold_by_owner": false
     },
     "Python/pypi": {
       "status": "built_fixture_and_production_verified",
@@ -203,13 +202,13 @@
       "api_prefix": "usb_over_ip_sdk_json_"
     },
     "JavaScript/npm": {
-      "status": "registry_publication_requires_action",
+      "status": "stopped_before_submission",
       "name": "usb-over-ip-sdk",
       "version": "1.0.0",
       "directory": "USB-over-IP-SDK-JavaScript-npm",
       "registry_published": false,
       "documentation_bundled": true,
-      "url": "https://www.npmjs.com/package/usb-over-ip-sdk",
+      "url": null,
       "public_consumer_verified": false,
       "module": "usb_over_ip_sdk",
       "dll_name": "USBoverIPSDKJsonSDK.dll",

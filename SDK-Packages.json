@@ -12,6 +12,76 @@
         ]
       },
       "distribution": "Shared native source; registry publication is reported separately below"
+    },
+    {
+      "directory": "USB-over-IP-SDK-C-ffi",
+      "distribution": "Native C ABI adapter to the original project SDK",
+      "dll": "USBoverIPSDKJsonSDK.dll",
+      "api_prefix": "usb_over_ip_sdk_json_"
+    },
+    {
+      "directory": "USB-over-IP-SDK-Python-pypi",
+      "language": "Python",
+      "registry": "pypi",
+      "name": "usb-over-ip-sdk",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-Ruby-rubygems",
+      "language": "Ruby",
+      "registry": "rubygems",
+      "name": "usb-over-ip-sdk",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-Go-modules",
+      "language": "Go",
+      "registry": "modules",
+      "name": "usb-over-ip-sdk",
+      "version": "v1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-Rust-cargo",
+      "language": "Rust",
+      "registry": "cargo",
+      "name": "usb-over-ip-sdk",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-Java-maven",
+      "language": "Java",
+      "registry": "maven",
+      "name": "usb-over-ip-sdk",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-Dart-pub-dev",
+      "language": "Dart",
+      "registry": "pub-dev",
+      "name": "usb_over_ip_sdk",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-NET-nuget",
+      "language": "NET",
+      "registry": "nuget",
+      "name": "USBoverIPSDK.SDK",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
+    },
+    {
+      "directory": "USB-over-IP-SDK-PowerShell-gallery",
+      "language": "PowerShell",
+      "registry": "gallery",
+      "name": "USBoverIPSDK",
+      "version": "1.0.0",
+      "distribution": "Documented native SDK; registry receipt tracked independently"
     }
   ],
   "notes": "Registry accounts or community acceptance are separate. No missing language binding is represented as implemented.",

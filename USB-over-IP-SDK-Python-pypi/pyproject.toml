@@ -1,0 +1,18 @@
+[build-system]
+requires=["setuptools>=77","wheel>=0.43"]
+build-backend="setuptools.build_meta"
+[project]
+name="usb-over-ip-sdk"
+version="1.0.0"
+description="Windows x64 USB-over-IP-SDK direct SDK"
+requires-python=">=3.10"
+license="MIT"
+readme="README.md"
+[project.urls]
+Repository="https://github.com/titanfyre/USB-over-IP-SDK"
+[tool.setuptools]
+packages=["usb_over_ip_sdk"]
+[tool.setuptools.package-data]
+usb_over_ip_sdk=["*.dll"]
+[tool.setuptools.data-files]
+"share/usb-over-ip-sdk/docs"=["docs/*","LICENSE"]

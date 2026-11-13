@@ -1,0 +1,1 @@
+[{"operation": "check", "arguments": {"pairing": {"fingerprint": "bad", "secret": "bad"}}, "expected_key": "valid", "expected_value": false}]

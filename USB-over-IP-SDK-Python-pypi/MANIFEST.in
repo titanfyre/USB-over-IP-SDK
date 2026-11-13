@@ -1,0 +1,3 @@
+include README.md LICENSE
+recursive-include usb_over_ip_sdk *.py *.dll
+recursive-include docs *

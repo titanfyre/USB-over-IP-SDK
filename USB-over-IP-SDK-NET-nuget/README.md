@@ -1,8 +1,6 @@
 # USB-over-IP-SDK .NET8 SDK
 
-Package ID `USBoverIPSDK.SDK`. NuGet upload remains on hold at owner request.
-
-```csharp
+Package ID `USBoverIPSDK.SDK`. ```csharp
 using var client=new TitanCSA.Products.USBoverIPSDK.Client();
 string statusJson=client.Call("client_status", "{}");
 ```

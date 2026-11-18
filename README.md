@@ -226,7 +226,7 @@ Les sources, licences, guides API et exemples sont regroupes dans [le depot SDK 
 | PowerShell Gallery | `USBoverIPSDK` | `Install-Module USBoverIPSDK -RequiredVersion 1.0.0 -Scope CurrentUser` |
 | pub.dev | `usb_over_ip_sdk` | Commande prevue apres publication : `dart pub add usb_over_ip_sdk:1.0.0` |
 | RubyGems | `usb-over-ip-sdk` | `gem install usb-over-ip-sdk -v 1.0.0` |
-| Packagist | `titancsa/usb-over-ip-sdk` | Commande prevue apres publication : `composer require titancsa/usb-over-ip-sdk:1.0.0` |
+| Packagist | `titancsa/usb-over-ip-sdk` | `composer require titancsa/usb-over-ip-sdk:1.0.0` |
 
 Pour vcpkg et Conan, configure d abord le registre TitanCSA avec [le guide complet](https://github.com/TitanCSA/sdk-packages/tree/main/projects/USB-over-IP-SDK/README.md). Le guide explique aussi Maven/Gradle, les prerequis et le chargement des DLL. Les pilotes/applications du produit sont installes separement. Les commandes marquees prevues ne sont pas encore disponibles.
 

@@ -3,7 +3,11 @@
 <!-- simple-start:start -->
 Use a supported USB device from another computer over a network.
 
-**Start here.** Check whether your device uses WinUSB before trying the example.
+[First steps](#first-steps) · [Develop](#sdk-and-packages) · [Maintain](https://github.com/TitanCSA/sdk-packages/blob/main/CONTRIBUTING.md)
+
+## First steps
+
+Check whether your device uses WinUSB before trying the example.
 <!-- simple-start:end -->
 
 <!-- full-version-contact:start -->
@@ -218,32 +222,11 @@ material. No unlawful use is endorsed. Software is supplied without warranty,
 subject to its licenses and mandatory statutory rights.
 
 <!-- central-sdk-packages:start -->
-## Paquets et installation
+<a name="paquets-et-installation"></a>
 
-Les sources, licences, guides API et exemples sont regroupes dans [le depot SDK dedie](https://github.com/TitanCSA/sdk-packages/tree/main/projects/USB-over-IP-SDK). Choisis le paquet a installer puis execute sa commande dans son dossier.
+## SDK and packages
 
-| Registre | Paquet | Installation / utilisation |
-| --- | --- | --- |
-| vcpkg | `usb-over-ip-sdk` | `vcpkg install usb-over-ip-sdk:x64-windows` |
-| Conan | `usb-over-ip-sdk` | `conan install --requires=usb-over-ip-sdk/0.1.1 -r titancsa --build=missing -s compiler.cppstd=17` |
-| NuGet | `USB-over-IP-SDK.Native` | `Install-Package USB-over-IP-SDK.Native -Version 0.1.1` |
-| NuGet | `USBoverIPSDK.SDK` | `dotnet add package USBoverIPSDK.SDK --version 1.0.0` |
-| PyPI | `usb-over-ip-sdk` | Commande prevue apres publication : `python -m pip install usb-over-ip-sdk==1.0.0` |
-| Conda | `usb-over-ip-sdk` | `conda install --override-channels -c https://raw.githubusercontent.com/TitanCSA/sdk-packages/089bc73095aa8eda89bacbe10d0b9e58394b0207/conda-channel -c conda-forge usb-over-ip-sdk` (canal TitanCSA) |
-| crates.io | `usb-over-ip-sdk` | `cargo add usb-over-ip-sdk@1.0.0` |
-| npm | `usb-over-ip-sdk` | Commande prevue apres publication : `npm install usb-over-ip-sdk@1.0.0` |
-| Maven Central | `io.github.titancsa:usb-over-ip-sdk` | `io.github.titancsa:usb-over-ip-sdk:1.0.0 (pom.xml / Gradle)` |
-| JitPack | `com.github.titanfyre:USB-over-IP-SDK` | `com.github.titanfyre:USB-over-IP-SDK:java-sdk-v1.0.0 (avec le depot JitPack)` |
-| Go Modules | `github.com/titanfyre/USB-over-IP-SDK/USB-over-IP-SDK-Go-modules` | `go get github.com/titanfyre/USB-over-IP-SDK/USB-over-IP-SDK-Go-modules@v1.0.0` |
-| pkg.go.dev | `github.com/titanfyre/USB-over-IP-SDK/USB-over-IP-SDK-Go-modules` | `Documentation : https://pkg.go.dev/github.com/titanfyre/USB-over-IP-SDK/USB-over-IP-SDK-Go-modules@v1.0.0` |
-| PowerShell Gallery | `USBoverIPSDK` | `Install-Module USBoverIPSDK -RequiredVersion 1.0.0 -Scope CurrentUser` |
-| pub.dev | `usb_over_ip_sdk` | Commande prevue apres publication : `dart pub add usb_over_ip_sdk:1.0.0` |
-| RubyGems | `usb-over-ip-sdk` | `gem install usb-over-ip-sdk -v 1.0.0` |
-| Packagist | `titancsa/usb-over-ip-sdk` | `composer require titancsa/usb-over-ip-sdk:1.0.0` |
-
-Pour vcpkg et Conan, configure d abord le registre TitanCSA avec [le guide complet](https://github.com/TitanCSA/sdk-packages/tree/main/projects/USB-over-IP-SDK/README.md). Le guide explique aussi Maven/Gradle, les prerequis et le chargement des DLL. Les pilotes/applications du produit sont installes separement. Les commandes marquees prevues ne sont pas encore disponibles.
-
-Les anciens imports Go et versions JitPack gardent leurs tags. Pour les anciennes archives SDK, utilise [les liens de remplacement](https://github.com/TitanCSA/sdk-packages/blob/main/release-assets/URL-MIGRATION.json).
+Choose a language in the [SDK and package guide](https://github.com/TitanCSA/sdk-packages/tree/main/projects/USB-over-IP-SDK#readme) for exact install commands and examples. If your example requires a driver or app, install it separately.
 <!-- central-sdk-packages:end -->
 
 ## Commercial integration and support
